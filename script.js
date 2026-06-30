@@ -1,33 +1,53 @@
 /* ==========================================
-   3. HÀM UPDATE (Kích hoạt khi di chuột vào ảnh)
+   MỤC 8: Thêm trình lắng nghe sự kiện onload
    ========================================== */
-function upDate(previewPic) {
-    // a & b: In thông tin kiểm tra ra console để debug
-    console.log("Sự kiện di chuột đã kích hoạt!");
-    console.log("Ảnh alt: " + previewPic.alt);
-    console.log("Ảnh src: " + previewPic.src);
+window.onload = function() {
+    console.log("Trang web đã tải xong thành công!");
+    addTabFocus(); // Gọi hàm tự động thêm thuộc tính tabindex
+};
 
-    // Lấy phần tử có id là image
-    var imageDiv = document.getElementById("image");
-
-    // c: Thay đổi văn bản của phần tử thành thuộc tính alt của ảnh preview
-    imageDiv.innerHTML = previewPic.alt;
-
-    // e: Thay đổi ảnh nền (background-image) thành thuộc tính src của ảnh preview
-    imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+/* ==========================================
+   MỤC 9: Tạo hàm chạy vòng lặp gán thuộc tính tabindex
+   ========================================== */
+function addTabFocus() {
+    console.log("Hành động gán thuộc tính tabindex đang kích hoạt...");
+    
+    // b: Viết một vòng lặp for để duyệt qua từng hình ảnh
+    var images = document.querySelectorAll(".preview");
+    
+    for (var i = 0; i < images.length; i++) {
+        // c: Thêm thuộc tính tabindex để có thể điều hướng bằng bàn phím
+        images[i].setAttribute("tabindex", "0");
+    }
+    console.log("Đã gán xong thuộc tính tabindex cho tất cả " + images.length + " ảnh!");
 }
 
 /* ==========================================
-   4. HÀM UNDO (Kích hoạt khi bỏ chuột ra khỏi ảnh)
+   MỤC 6: Hàm cập nhật khi di chuột HOẶC khi Focus bằng phím Tab
+   ========================================== */
+function upDate(previewPic) {
+    console.log("Sự kiện hiển thị ảnh kích hoạt!");
+    
+    var displayDiv = document.getElementById("image");
+    
+    // Thay đổi văn bản hiển thị thành alt của ảnh
+    displayDiv.innerHTML = previewPic.alt;
+    
+    // Thay đổi ảnh nền lớn
+    displayDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+}
+
+/* ==========================================
+   MỤC 6: Hàm hoàn tác khi rời chuột HOẶC khi mất Focus (Blur)
    ========================================== */
 function unDo() {
-    console.log("Sự kiện rời chuột đã kích hoạt!");
-
-    var imageDiv = document.getElementById("image");
-
-    // a: Cập nhật URL hình nền trở lại giá trị ban đầu trống rỗng
-    imageDiv.style.backgroundImage = "url('')";
-
-    // b: Cập nhật lại nội dung văn bản gốc
-    imageDiv.innerHTML = "Di chuột qua hình ảnh bên dưới để hiển thị tại đây.";
+    console.log("Sự kiện hoàn tác kích hoạt!");
+    
+    var displayDiv = document.getElementById("image");
+    
+    // Trả ảnh nền về trống rỗng
+    displayDiv.style.backgroundImage = "url('')";
+    
+    // Trả lại nội dung văn bản gốc
+    displayDiv.innerHTML = "Di chuột hoặc nhấn Tab qua hình ảnh bên dưới để hiển thị tại đây.";
 }
