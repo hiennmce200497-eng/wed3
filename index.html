@@ -3,29 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Viện Ảnh Tương Tác JavaScript</title>
+    <title>Thư Viện Ảnh Tương Tác Nâng Cao - Hiền Minh Nguyễn</title>
     <style>
-        /* CSS cơ bản để tạo khung hiển thị */
         #image {
             width: 80%;
-            height: 300px;
-            border: 3px solid #333;
+            height: 320px;
+            border: 4px dashed #2c3e50;
             margin: 20px auto;
-            background-color: #8e44ad;
+            background-color: #7f8c8d;
             color: #fff;
-            font-size: 20px;
+            font-size: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-size: cover;
             background-position: center;
-            text-shadow: 1px 1px 5px #000;
+            text-shadow: 2px 2px 4px #000;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
         }
         .preview {
-            width: 150px;
+            width: 130px;
+            height: 90px;
             margin: 10px;
             cursor: pointer;
-            border: 2px solid #ccc;
+            border: 3px solid #ccc;
+            transition: all 0.2s;
+        }
+        /* Hiển thị viền rõ khi dùng phím Tab (Mục 10) */
+        .preview:focus {
+            border-color: #e74c3c;
+            outline: none;
+            transform: scale(1.05);
         }
         .gallery {
             text-align: center;
@@ -34,19 +44,19 @@
 </head>
 <body>
 
-    <!-- Khung hiển thị lớn thay đổi bằng JS -->
     <div id="image">
-        Di chuột qua hình ảnh bên dưới để hiển thị tại đây.
+        Di chuột hoặc nhấn Tab qua hình ảnh bên dưới để hiển thị tại đây.
     </div>
 
-    <!-- Danh sách ảnh preview nhỏ -->
     <div class="gallery">
-        <img class="preview" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Món nướng BBQ hấp dẫn" onmouseover="upDate(this)" onmouseout="unDo()">
-        <img class="preview" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="Bánh pancake mật ong" onmouseover="upDate(this)" onmouseout="unDo()">
-        <img class="preview" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Pizza hải sản béo ngậy" onmouseover="upDate(this)" onmouseout="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500" alt="Món thịt nướng BBQ rực lửa" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500" alt="Bánh Pancake ngọt ngào xếp tầng" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500" alt="Bánh Pizza hải sản phô mai kéo sợi" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500" alt="Bánh mì nướng mật ong trái cây" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500" alt="Salad rau củ trứng luộc thanh đạm" onmouseover="onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500" alt="Mì Ý sốt pesto tôm tươi thơm phức" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
     </div>
 
-    <!-- Nhúng file xử lý logic JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
